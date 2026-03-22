@@ -103,50 +103,33 @@ section{padding:120px 60px;}
 .w-h em{font-style:italic;color:var(--gold);}
 .w-ct{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.18em;color:var(--muted);}
 
-/* Campaign card — stacked layout, full image width */
-.camp{display:block;border-bottom:1px solid var(--line);margin-bottom:0;}
-.c-visual{position:relative;width:100%;overflow:hidden;}
-.c-visual img{width:100%;display:block;}
-
-/* Carousel */
-.carousel-wrap{position:relative;overflow:hidden;width:100%;}
-.carousel-track{display:flex;transition:transform .5s ease;will-change:transform;}
-.carousel-track > div{min-width:100%;flex-shrink:0;}
-.carousel-track img{width:100%;display:block;}
-.carousel-track video{width:100%;display:block;}
-.car-nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 0;background:var(--white);border-top:1px solid var(--line);}
-.car-btn{background:none;border:1px solid var(--line);color:var(--black);width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:none;transition:background .3s;}
-.car-btn:hover{background:var(--mid);}
-.car-dots{display:flex;gap:6px;}
-.car-dot{width:5px;height:5px;border-radius:50%;background:var(--mid);cursor:none;transition:background .3s,transform .3s;}
-.car-dot.on{background:var(--black);transform:scale(1.3);}
-
-.c-content{padding:40px 48px;background:var(--white);}
-.c-brand{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.c-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;line-height:1.05;margin-bottom:16px;}
-.c-title em{font-style:italic;color:var(--gold);}
-.c-cap{font-size:0.74rem;line-height:1.95;color:var(--muted);margin-bottom:20px;max-width:700px;}
-.c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
-.ctag{padding:4px 12px;border:1px solid var(--line);font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
-.c-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
-.c-corner{font-family:'DM Mono',monospace;font-size:0.44rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
-.c-num{font-family:'Playfair Display',serif;font-size:4rem;font-style:italic;color:var(--mid);line-height:1;user-select:none;}
-
-/* Camp content */
-.c-content{padding:56px 52px;display:flex;flex-direction:column;justify-content:space-between;background:var(--white);border-left:1px solid var(--line);}
+/* Campaign card */
+.camp{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);}
+.camp:nth-child(even){direction:rtl;}
+.camp:nth-child(even)>*{direction:ltr;}
+.c-visual{background:var(--grey);}
+.slides-wrap{overflow:hidden;width:100%;}
+.slides-track{display:flex;transition:transform .5s ease;will-change:transform;}
+.slides-track>div{min-width:100%;flex-shrink:0;}
+.slides-track img{width:100%;display:block;height:680px;object-fit:cover;object-position:top center;}
+.slides-track video{width:100%;display:block;height:680px;object-fit:cover;object-position:center;}
+.slide-nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 0;background:var(--white);border-top:1px solid var(--line);}
+.slide-nav button{background:none;border:1px solid var(--line);color:var(--black);width:32px;height:32px;font-size:0.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.slide-nav button:hover{background:var(--mid);}
+.sdots{display:flex;gap:6px;align-items:center;}
+.sdot{width:6px;height:6px;border-radius:50%;background:var(--mid);cursor:pointer;border:none;padding:0;transition:background .3s,transform .3s;}
+.sdot.on{background:var(--black);transform:scale(1.3);}
+.c-content{padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;background:var(--white);border-left:1px solid var(--line);}
 .camp:nth-child(even) .c-content{border-left:none;border-right:1px solid var(--line);}
-.c-top{}
 .c-brand{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
 .c-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:400;line-height:1.05;margin-bottom:24px;}
 .c-title em{font-style:italic;color:var(--gold);}
 .c-cap{font-size:0.74rem;line-height:1.95;color:var(--muted);margin-bottom:28px;}
-.c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0;}
+.c-tags{display:flex;flex-wrap:wrap;gap:6px;}
 .ctag{padding:4px 12px;border:1px solid var(--line);font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
-.c-bottom{display:flex;align-items:flex-end;justify-content:space-between;}
+.c-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:24px;}
 .c-num{font-family:'Playfair Display',serif;font-size:5rem;font-style:italic;color:var(--mid);line-height:1;user-select:none;}
 .c-corner{font-family:'DM Mono',monospace;font-size:0.44rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
-
-/* EXPERTISE */
 .expertise{background:var(--grey);border-bottom:1px solid var(--line);}
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--line);}
 .exp{background:var(--grey);padding:40px 32px;transition:background .3s;}
@@ -154,39 +137,49 @@ section{padding:120px 60px;}
 .exp-tag{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
 .exp-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:12px;}
 .exp-desc{font-size:0.68rem;line-height:1.85;color:var(--muted);}
-
-/* CONTACT */
 .contact{background:var(--white);border-bottom:1px solid var(--line);text-align:center;padding:160px 60px;}
 .ct-pre{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;}
 .ct-h{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,9rem);font-weight:400;line-height:.95;margin-bottom:56px;}
 .ct-h em{font-style:italic;color:var(--gold);}
-.ct-h span{display:block;color:var(--mid);}
-.ct-email{display:inline-block;font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:.12em;color:var(--black);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;transition:color .3s;}
-.ct-email:hover{color:var(--gold);}
-.ct-linkedin{display:inline-flex;align-items:center;gap:12px;padding:16px 36px;border:1px solid var(--black);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);text-decoration:none;position:relative;overflow:hidden;transition:color .4s;}
-.ct-linkedin::before{content:'';position:absolute;inset:0;background:var(--black);transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1);}
-.ct-linkedin svg,.ct-linkedin span{position:relative;z-index:1;}
-.ct-linkedin:hover{color:var(--white);}
-.ct-linkedin:hover::before{transform:translateX(0);}
+.ct-linkedin{display:inline-flex;align-items:center;gap:12px;padding:16px 36px;border:1px solid var(--black);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);text-decoration:none;transition:background .3s,color .3s;}
+.ct-linkedin:hover{background:var(--black);color:var(--white);}
 .ct-sub{margin-top:32px;font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
-
-/* FOOTER */
 footer{padding:22px 60px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:var(--grey);}
 footer p{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.12em;color:var(--muted);}
 .f-links{display:flex;gap:24px;}
 .f-links a{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.12em;color:var(--muted);text-decoration:none;transition:color .3s;}
 .f-links a:hover{color:var(--black);}
-
-@media(max-width:900px){
-  nav{padding:18px 24px;} .nav-links{display:none;}
-  section{padding:80px 24px;} .hero{padding:120px 24px 60px;}
-  .hero-bottom{grid-template-columns:1fr;gap:32px;}
-  .ab-grid{grid-template-columns:1fr;gap:48px;}
-  .proc-row{grid-template-columns:repeat(2,1fr);}
-  .camp{grid-template-columns:1fr;} .camp:nth-child(even){direction:ltr;}
-  .c-visual{min-height:320px;} .c-content{border:none!important;border-top:1px solid var(--line)!important;}
+@media(max-width:768px){
+  nav{padding:16px 20px;} .nav-links{display:none;} .nav-ping{font-size:0.55rem;}
+  section{padding:64px 20px;}
+  .hero{padding:100px 20px 48px;min-height:auto;}
+  .hero-title{font-size:clamp(3rem,12vw,6rem);}
+  .hero-bottom{grid-template-columns:1fr;gap:24px;}
+  .hero-right{align-items:flex-start;}
+  .ab-grid{grid-template-columns:1fr;gap:40px;}
+  .mf-text{font-size:clamp(1.8rem,7vw,3.5rem);}
+  .proc-row{grid-template-columns:1fr 1fr;}
+  .w-head{flex-direction:column;gap:8px;}
+  .camp{display:flex;flex-direction:column;direction:ltr!important;}
+  .camp:nth-child(even){direction:ltr!important;}
+  .c-content{order:1;padding:24px 20px;border:none!important;border-bottom:1px solid var(--line)!important;}
+  .c-visual{order:2;}
+  .slides-track img{width:100%;display:block;height:115vw;object-fit:cover;object-position:top center;}
+  .slides-track video{width:100%;display:block;height:115vw;object-fit:cover;object-position:center;}
   .exp-grid{grid-template-columns:1fr;}
-  footer{flex-direction:column;gap:10px;text-align:center;}
+  .contact{padding:80px 20px;}
+  .ct-h{font-size:clamp(2.5rem,10vw,5rem);}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}
+  .ticker{display:none;}
+  .btn{padding:12px 24px;font-size:0.6rem;}
+  .c-title{font-size:clamp(1.6rem,6vw,2.5rem);}
+  .c-num{font-size:3rem;}
+}
+@media(max-width:480px){
+  .hero-title{font-size:clamp(2.5rem,11vw,4rem);}
+  .proc-row{grid-template-columns:1fr;}
+  .slides-track img{height:125vw;}
+  .slides-track video{height:125vw;}
 }
 </style>
 </head>
@@ -278,79 +271,90 @@ footer p{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.12em;
     <div class="w-ct">003 Campaigns · 2025</div>
   </div>
 
-
   <!-- BULGARI -->
   <div class="camp">
-    <div class="carousel-wrap">
-      <div class="carousel-track" id="bTrack">
-        <div><img src="bulgari1.png" alt="Bulgari 1"/></div>
-        <div><img src="bulgari2.png" alt="Bulgari 2"/></div>
-        <div><img src="bulgari3.png" alt="Bulgari 3"/></div>
-        <div><img src="bulgari4.png" alt="Bulgari 4"/></div>
+    <div class="c-visual">
+      <div class="slides-wrap">
+        <div class="slides-track" id="bTrack">
+          <div><img src="bulgari1.png" alt="Bulgari 1"/></div>
+          <div><img src="bulgari2.png" alt="Bulgari 2"/></div>
+          <div><img src="bulgari3.png" alt="Bulgari 3"/></div>
+          <div><img src="bulgari4.png" alt="Bulgari 4"/></div>
+        </div>
       </div>
-    </div>
-    <div class="car-nav">
-      <button class="car-btn" onclick="move('bTrack','bDots',4,-1)">←</button>
-      <div class="car-dots" id="bDots">
-        <span class="car-dot on"></span><span class="car-dot"></span><span class="car-dot"></span><span class="car-dot"></span>
+      <div class="slide-nav">
+        <button onclick="prev('bTrack','bDots',4)">←</button>
+        <div class="sdots" id="bDots">
+          <button class="sdot on"></button><button class="sdot"></button><button class="sdot"></button><button class="sdot"></button>
+        </div>
+        <button onclick="next('bTrack','bDots',4)">→</button>
       </div>
-      <button class="car-btn" onclick="move('bTrack','bDots',4,1)">→</button>
     </div>
     <div class="c-content">
-      <div class="c-brand">Bulgari · Serpenti Reborn · Gen Z Strategy</div>
-      <h3 class="c-title">New skin.<br><em>Same serpent.</em></h3>
-      <p class="c-cap">Cartier made the Tank desirable again. Bulgari needs to do the same for the Serpenti — but the origin myth is more powerful. Elizabeth Taylor. Italian cinema. A woman who has never been just one thing. Four skins, four emotional states, one watch. The Serpenti doesn't dress you up. It reveals who you already are.</p>
-      <div class="c-tags"><span class="ctag">Brand Strategy</span><span class="ctag">Gen Z</span><span class="ctag">Watch Campaign</span><span class="ctag">Color Theory</span><span class="ctag">GenAI</span></div>
+      <div>
+        <div class="c-brand">Bulgari · Serpenti Reborn · Gen Z Strategy</div>
+        <h3 class="c-title">New skin.<br><em>Same serpent.</em></h3>
+        <p class="c-cap">Cartier made the Tank desirable again. Bulgari needs to do the same for the Serpenti — but the origin myth is more powerful. Elizabeth Taylor. Italian cinema. A woman who has never been just one thing. Four skins, four emotional states, one watch.</p>
+        <div class="c-tags"><span class="ctag">Brand Strategy</span><span class="ctag">Gen Z</span><span class="ctag">Watch Campaign</span><span class="ctag">Color Theory</span><span class="ctag">GenAI</span></div>
+      </div>
       <div class="c-bottom"><div class="c-corner">001 / 003</div><div class="c-num">01</div></div>
     </div>
   </div>
 
   <!-- LOEWE -->
   <div class="camp">
-    <div class="carousel-wrap">
-      <div class="carousel-track" id="lTrack">
-        <div><img src="loewe1.png" alt="Loewe 1"/></div>
-        <div><img src="loewe2.png" alt="Loewe 2"/></div>
-        <div><img src="loewe3.png" alt="Loewe 3"/></div>
+    <div class="c-visual">
+      <div class="slides-wrap">
+        <div class="slides-track" id="lTrack">
+          <div><img src="loewe1.png" alt="Loewe 1"/></div>
+          <div><img src="loewe2.png" alt="Loewe 2"/></div>
+          <div><img src="loewe3.png" alt="Loewe 3"/></div>
+        </div>
       </div>
-    </div>
-    <div class="car-nav">
-      <button class="car-btn" onclick="move('lTrack','lDots',3,-1)">←</button>
-      <div class="car-dots" id="lDots">
-        <span class="car-dot on"></span><span class="car-dot"></span><span class="car-dot"></span>
+      <div class="slide-nav">
+        <button onclick="prev('lTrack','lDots',3)">←</button>
+        <div class="sdots" id="lDots">
+          <button class="sdot on"></button><button class="sdot"></button><button class="sdot"></button>
+        </div>
+        <button onclick="next('lTrack','lDots',3)">→</button>
       </div>
-      <button class="car-btn" onclick="move('lTrack','lDots',3,1)">→</button>
     </div>
     <div class="c-content">
-      <div class="c-brand">Loewe × Kakao Friends · FW 2026/27 · Korea</div>
-      <h3 class="c-title"><em>Elsewhere</em></h3>
-      <p class="c-cap">Korean Gen Z doesn't need more joy — they need an exit. Loewe FW26/27 is the portal: plush, inflatable, unapologetically soft. Worn correctly, it takes you somewhere else entirely. A digital campaign for the Korean market built around Ryan from Kakao Friends — the one companion who never asks anything of you. Three formats: teaser, campaign reveal, editorial.</p>
-      <div class="c-tags"><span class="ctag">FW 2026/27</span><span class="ctag">Korea</span><span class="ctag">Gen Z</span><span class="ctag">KakaoTalk</span><span class="ctag">GenAI</span></div>
+      <div>
+        <div class="c-brand">Loewe × Kakao Friends · FW 2026/27 · Korea</div>
+        <h3 class="c-title"><em>Elsewhere</em></h3>
+        <p class="c-cap">Korean Gen Z doesn't need more joy — they need an exit. Loewe FW26/27 is the portal: plush, inflatable, unapologetically soft. Worn correctly, it takes you somewhere else entirely. Three formats: teaser, campaign reveal, editorial.</p>
+        <div class="c-tags"><span class="ctag">FW 2026/27</span><span class="ctag">Korea</span><span class="ctag">Gen Z</span><span class="ctag">KakaoTalk</span><span class="ctag">GenAI</span></div>
+      </div>
       <div class="c-bottom"><div class="c-corner">002 / 003</div><div class="c-num">02</div></div>
     </div>
   </div>
 
   <!-- FERRARI -->
   <div class="camp">
-    <div class="carousel-wrap">
-      <div class="carousel-track" id="fTrack">
-        <div><img src="ferrari1.png" alt="Ferrari 1"/></div>
-        <div><img src="ferrari2.png" alt="Ferrari 2"/></div>
-        <div style="background:#000;"><video autoplay muted loop playsinline style="width:100%;display:block;"><source src="ferrari-video.mp4" type="video/mp4"></video></div>
+    <div class="c-visual">
+      <div class="slides-wrap">
+        <div class="slides-track" id="fTrack">
+          <div><img src="ferrari1.png" alt="Ferrari 1"/></div>
+          <div><img src="ferrari2.png" alt="Ferrari 2"/></div>
+          <div style="background:#000;"><video autoplay muted loop playsinline style="width:100%;display:block;height:600px;object-fit:cover;"><source src="ferrari-video.mp4" type="video/mp4"></video></div>
+        </div>
       </div>
-    </div>
-    <div class="car-nav">
-      <button class="car-btn" onclick="move('fTrack','fDots',3,-1)">←</button>
-      <div class="car-dots" id="fDots">
-        <span class="car-dot on"></span><span class="car-dot"></span><span class="car-dot"></span>
+      <div class="slide-nav">
+        <button onclick="prev('fTrack','fDots',3)">←</button>
+        <div class="sdots" id="fDots">
+          <button class="sdot on"></button><button class="sdot"></button><button class="sdot"></button>
+        </div>
+        <button onclick="next('fTrack','fDots',3)">→</button>
       </div>
-      <button class="car-btn" onclick="move('fTrack','fDots',3,1)">→</button>
     </div>
     <div class="c-content">
-      <div class="c-brand">Ferrari Luce · Electric Launch · Brand Strategy</div>
-      <h3 class="c-title">The most powerful<br>sound is <em>silence.</em></h3>
-      <p class="c-cap">Ferrari's first electric car faces an existential communications challenge — how do you sell a Ferrari without the roar? You reframe silence as evolution, not loss. The Luce moves through the Tuscan countryside at speed. Wild horses graze undisturbed. Nature doesn't run. The most advanced Ferrari ever made is also the most respectful.</p>
-      <div class="c-tags"><span class="ctag">Electric Launch</span><span class="ctag">Brand Strategy</span><span class="ctag">Film</span><span class="ctag">Veo 3</span><span class="ctag">GenAI</span></div>
+      <div>
+        <div class="c-brand">Ferrari Luce · Electric Launch · Brand Strategy</div>
+        <h3 class="c-title">The most powerful<br>sound is <em>silence.</em></h3>
+        <p class="c-cap">Ferrari's first electric car faces an existential challenge — how do you sell a Ferrari without the roar? You reframe silence as evolution. The Luce moves through Tuscany at speed. Wild horses graze undisturbed. The most advanced Ferrari ever made is also the most respectful.</p>
+        <div class="c-tags"><span class="ctag">Electric Launch</span><span class="ctag">Brand Strategy</span><span class="ctag">Film</span><span class="ctag">Veo 3</span><span class="ctag">GenAI</span></div>
+      </div>
       <div class="c-bottom"><div class="c-corner">003 / 003</div><div class="c-num">03</div></div>
     </div>
   </div>
@@ -387,31 +391,50 @@ footer p{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.12em;
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Cursor
+<script>
+// Cursor — desktop only
 const cd=document.getElementById('cd'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function a(){cd.style.left=mx+'px';cd.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(a);})();
-document.querySelectorAll('a,button,.camp,.exp,.proc').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cr.classList.add('x'));
-  el.addEventListener('mouseleave',()=>cr.classList.remove('x'));
-});
-
-// Ferrari lines
-const fl=document.getElementById('fLines');
-if(fl){for(let i=0;i<20;i++){const l=document.createElement('div');const a=-55+(i/19)*110;const h=52+Math.abs(a)*1.3;l.style.cssText=`position:absolute;bottom:0;left:${(i/19)*100}%;width:1px;height:${h}%;background:linear-gradient(to top,rgba(180,14,14,.2),transparent);transform:rotate(${a}deg);transform-origin:bottom center;opacity:${.04+(1-Math.abs(a)/55)*.18};`;fl.appendChild(l);}}
-
-// Universal carousel
-const idx={bTrack:0,lTrack:0,fTrack:0};
-function move(trackId,dotsId,total,dir){
-  idx[trackId]=(idx[trackId]+dir+total)%total;
-  document.getElementById(trackId).style.transform=`translateX(-${idx[trackId]*100}%)`;
-  document.querySelectorAll('#'+dotsId+' .car-dot').forEach((d,i)=>d.classList.toggle('on',i===idx[trackId]));
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function a(){if(cd)cd.style.cssText='left:'+mx+'px;top:'+my+'px;';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;if(cr)cr.style.cssText='left:'+rx+'px;top:'+ry+'px;';requestAnimationFrame(a);})();
 }
-setInterval(()=>move('bTrack','bDots',4,1),4000);
-setInterval(()=>move('lTrack','lDots',3,1),4500);
-setInterval(()=>move('fTrack','fDots',3,1),5000);
 
-// Scroll reveal
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(
+// Carousel
+const cursors={};
+function goTo(trackId,dotsId,total,n){
+  if(!cursors[trackId])cursors[trackId]=0;
+  cursors[trackId]=(n+total)%total;
+  const t=document.getElementById(trackId);
+  if(t)t.style.transform='translateX(-'+(cursors[trackId]*100)+'%)';
+  const d=document.getElementById(dotsId);
+  if(d)d.querySelectorAll('.sdot').forEach((s,i)=>s.classList.toggle('on',i===cursors[trackId]));
+}
+window.prev=function(t,d,total){goTo(t,d,total,(cursors[t]||0)-1);};
+window.next=function(t,d,total){goTo(t,d,total,(cursors[t]||0)+1);};
+
+// Auto advance
+setInterval(()=>next('bTrack','bDots',4),4000);
+setInterval(()=>next('lTrack','lDots',3),4500);
+setInterval(()=>next('fTrack','fDots',3),5000);
+
+// Touch swipe
+function addSwipe(wrapEl,trackId,dotsId,total){
+  let sx=0;
+  wrapEl.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  wrapEl.addEventListener('touchend',e=>{
+    const dx=sx-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>40){dx>0?next(trackId,dotsId,total):prev(trackId,dotsId,total);}
+  },{passive:true});
+}
+['bTrack','lTrack','fTrack'].forEach(id=>{
+  const t=document.getElementById(id);
+  if(t&&t.closest('.slides-wrap')){
+    const total=id==='bTrack'?4:3;
+    const dotsId=id.replace('Track','Dots');
+    addSwipe(t.closest('.c-visual'),id,dotsId,total);
+  }
+});
+</script>
+</body>
+</html>
