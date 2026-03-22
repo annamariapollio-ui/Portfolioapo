@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANNAMARIA POLLIO — Luxury Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;cursor:none!important;}
+:root{
+  --white:#fafaf8;
+  --black:#0d0d0d;
+  --grey:#f2f0ec;
+  --mid:#e8e4de;
+  --muted:#9a9690;
+  --gold:#b8912e;
+  --line:rgba(13,13,13,0.1);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+.cur{position:fixed;width:8px;height:8px;background:var(--black);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;}
+.cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(13,13,13,0.25);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .4s,height .4s,border-color .4s;}
+.cur-r.x{width:56px;height:56px;border-color:var(--gold);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:24px 60px;z-index:100;background:rgba(250,250,248,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);}
+.nav-logo{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.nav-links{display:flex;gap:40px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--black);}
+.nav-ping{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.ping{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:ping 2s ease infinite;}
+@keyframes ping{0%,100%{opacity:1;}50%{opacity:.2;}}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:140px 60px 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+.hero-top{display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;opacity:0;animation:up .6s ease .8s forwards;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,10vw,10rem);font-weight:400;line-height:.92;letter-spacing:-.01em;opacity:0;animation:up .9s ease 1s forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-bottom{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-top:60px;border-top:1px solid var(--line);margin-top:60px;opacity:0;animation:up .8s ease 1.3s forwards;}
+.hero-desc{font-size:0.8rem;line-height:2;color:var(--muted);}
+.hero-right{display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+.btn{display:inline-block;padding:14px 32px;font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;transition:color .4s;}
+.btn span{position:relative;z-index:1;}
+.btn::before{content:'';position:absolute;inset:0;transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1);}
+.btn-dark{border:1px solid var(--black);color:var(--black);}
+.btn-dark::before{background:var(--black);}
+.btn-dark:hover{color:var(--white);}
+.btn-dark:hover::before{transform:translateX(0);}
+.btn-light{border:1px solid var(--line);color:var(--muted);}
+.btn-light::before{background:var(--mid);}
+.btn-light:hover{color:var(--black);}
+.btn-light:hover::before{transform:translateX(0);}
+@keyframes up{to{opacity:1;transform:translateY(0);}from{opacity:0;transform:translateY(16px);}}
+
+/* TICKER */
+.ticker{border-bottom:1px solid var(--line);padding:13px 0;overflow:hidden;background:var(--grey);}
+.t-in{display:inline-flex;animation:tick 30s linear infinite;white-space:nowrap;}
+.t-in span{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);padding:0 28px;}
+.t-in .sep{color:var(--gold);}
+@keyframes tick{to{transform:translateX(-50%);}}
+
+/* SECTIONS */
+section{padding:120px 60px;}
+.s-label{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+
+/* ABOUT */
+.about{background:var(--white);border-bottom:1px solid var(--line);}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:64px;align-items:start;}
+.ab-h{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4.5vw,4.5rem);font-weight:400;line-height:1.05;margin-bottom:32px;}
+.ab-h em{font-style:italic;color:var(--gold);}
+.ab-text{font-size:0.78rem;line-height:2.1;color:var(--muted);}
+.ab-text p+p{margin-top:14px;}
+.ab-text strong{color:var(--black);font-weight:400;}
+.cred{display:grid;grid-template-columns:72px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);}
+.cred.v{opacity:1;transform:translateX(0);}
+.cred-yr{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.1em;color:var(--muted);line-height:1.6;}
+.cred-h{font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:400;margin-bottom:3px;color:var(--black);}
+.cred-p{font-size:0.62rem;color:var(--muted);line-height:1.55;}
+
+/* MANIFESTO */
+.manifesto{background:var(--black);color:var(--white);border-bottom:1px solid rgba(255,255,255,.06);}
+.mf-inner{max-width:1000px;}
+.mf-pre{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:48px;}
+.mf-text{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6.5vw,7rem);font-weight:400;line-height:1.05;}
+.mf-text em{font-style:italic;color:var(--gold);}
+.mf-text .out{color:rgba(255,255,255,0.5);-webkit-text-stroke:0;}
+.proc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:80px;background:rgba(255,255,255,.06);}
+.proc{background:var(--black);padding:36px 28px;transition:background .4s;}
+.proc:hover{background:#111;}
+.proc-n{font-family:'Playfair Display',serif;font-size:3rem;color:rgba(255,255,255,.07);line-height:1;margin-bottom:16px;font-style:italic;}
+.proc-t{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:10px;}
+.proc-d{font-size:0.68rem;line-height:1.8;color:rgba(255,255,255,.6);}
+
+/* WORK */
+.work{background:var(--white);border-bottom:1px solid var(--line);}
+.w-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2px;padding-bottom:32px;border-bottom:1px solid var(--line);}
+.w-h{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:400;line-height:.95;}
+.w-h em{font-style:italic;color:var(--gold);}
+.w-ct{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.18em;color:var(--muted);}
+
+/* Campaign card — side by side */
+.camp{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);}
+.camp:nth-child(even){direction:rtl;}
+.camp:nth-child(even)>*{direction:ltr;}
+.c-visual{overflow:hidden;}
+.carousel-wrap{overflow:hidden;width:100%;}
+.carousel-track{display:flex;transition:transform .5s ease;will-change:transform;}
+.carousel-track > div{min-width:100%;flex-shrink:0;}
+.carousel-track img{width:100%;display:block;}
+.carousel-track video{width:100%;display:block;}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px 0;background:var(--grey);border-top:1px solid var(--line);}
+.car-btn{background:none;border:1px solid var(--line);color:var(--black);width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:none;transition:background .3s;}
+.car-btn:hover{background:var(--mid);}
+.car-dots{display:flex;gap:6px;}
+.car-dot{width:5px;height:5px;border-radius:50%;background:var(--mid);cursor:none;transition:background .3s;}
+.car-dot.on{background:var(--black);}
+.c-content{padding:48px 48px;display:flex;flex-direction:column;justify-content:center;background:var(--white);border-left:1px solid var(--line);}
+.camp:nth-child(even) .c-content{border-left:none;border-right:1px solid var(--line);}
+.c-brand{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.c-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;line-height:1.05;margin-bottom:16px;}
+.c-title em{font-style:italic;color:var(--gold);}
+.c-cap{font-size:0.74rem;line-height:1.95;color:var(--muted);margin-bottom:20px;}
+.c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
+.ctag{padding:4px 12px;border:1px solid var(--line);font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.c-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;}
+.c-corner{font-family:'DM Mono',monospace;font-size:0.44rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
+.c-num{font-family:'Playfair Display',serif;font-size:4rem;font-style:italic;color:var(--mid);line-height:1;user-select:none;}
+
+/* Camp content */
+.c-content{padding:56px 52px;display:flex;flex-direction:column;justify-content:space-between;background:var(--white);border-left:1px solid var(--line);}
+.camp:nth-child(even) .c-content{border-left:none;border-right:1px solid var(--line);}
+.c-top{}
+.c-brand{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.c-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:400;line-height:1.05;margin-bottom:24px;}
+.c-title em{font-style:italic;color:var(--gold);}
+.c-cap{font-size:0.74rem;line-height:1.95;color:var(--muted);margin-bottom:28px;}
+.c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0;}
+.ctag{padding:4px 12px;border:1px solid var(--line);font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.c-bottom{display:flex;align-items:flex-end;justify-content:space-between;}
+.c-num{font-family:'Playfair Display',serif;font-size:5rem;font-style:italic;color:var(--mid);line-height:1;user-select:none;}
+.c-corner{font-family:'DM Mono',monospace;font-size:0.44rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
+
+/* EXPERTISE */
+.expertise{background:var(--grey);border-bottom:1px solid var(--line);}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--line);}
+.exp{background:var(--grey);padding:40px 32px;transition:background .3s;}
+.exp:hover{background:var(--white);}
+.exp-tag{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.exp-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:12px;}
+.exp-desc{font-size:0.68rem;line-height:1.85;color:var(--muted);}
+
+/* CONTACT */
+.contact{background:var(--white);border-bottom:1px solid var(--line);text-align:center;padding:160px 60px;}
+.ct-pre{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;}
+.ct-h{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,9rem);font-weight:400;line-height:.95;margin-bottom:56px;}
+.ct-h em{font-style:italic;color:var(--gold);}
+.ct-h span{display:block;color:var(--mid);}
+.ct-email{display:inline-block;font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:.12em;color:var(--black);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;transition:color .3s;}
+.ct-email:hover{color:var(--gold);}
+.ct-linkedin{display:inline-flex;align-items:center;gap:12px;padding:16px 36px;border:1px solid var(--black);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);text-decoration:none;position:relative;overflow:hidden;transition:color .4s;}
+.ct-linkedin::before{content:'';position:absolute;inset:0;background:var(--black);transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1);}
+.ct-linkedin svg,.ct-linkedin span{position:relative;z-index:1;}
+.ct-linkedin:hover{color:var(--white);}
+.ct-linkedin:hover::before{transform:translateX(0);}
+.ct-sub{margin-top:32px;font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
+
+/* FOOTER */
+footer{padding:22px 60px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:var(--grey);}
+footer p{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.12em;color:var(--muted);}
+.f-links{display:flex;gap:24px;}
+.f-links a{font-family:'DM Mono',monospace;font-size:0.46rem;letter-spacing:.12em;color:var(--muted);text-decoration:none;transition:color .3s;}
+.f-links a:hover{color:var(--black);}
+
+@media(max-width:900px){
+  nav{padding:18px 24px;} .nav-links{display:none;}
+  section{padding:80px 24px;} .hero{padding:120px 24px 60px;}
+  .hero-bottom{grid-template-columns:1fr;gap:32px;}
+  .ab-grid{grid-template-columns:1fr;gap:48px;}
+  .proc-row{grid-template-columns:repeat(2,1fr);}
+  .camp{grid-template-columns:1fr;} .camp:nth-child(even){direction:ltr;}
+  .c-visual{min-height:320px;} .c-content{border:none!important;border-top:1px solid var(--line)!important;}
+  .exp-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cd"></div>
+<div class="cur-r" id="cr"></div>
+
+<nav>
+  <a href="#" class="nav-logo">Annamaria Pollio</a>
+  <div class="nav-links">
+    <a href="#about">Profile</a>
+    <a href="#work">Work</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-ping"><div class="ping"></div>Available for roles</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-top">
+    <p class="hero-eyebrow">Luxury Strategy & Brand Transformation</p>
+    <h1 class="hero-title">
+      Where strategy<br>
+      meets <em>desire</em>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Strategy and transformation consultant at Accenture Switzerland — building the bridge between what luxury brands are and what they need to become. Five years at the intersection of consulting, digital, and luxury.</p>
+    <div class="hero-right">
+      <a href="#work" class="btn btn-dark"><span>View Work</span></a>
+      <a href="#contact" class="btn btn-light"><span>Get in Touch</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="t-in">
+    <span>Brand Strategy</span><span class="sep"> ✦ </span><span>Digital Transformation</span><span class="sep"> ✦ </span><span>Luxury & Fashion</span><span class="sep"> ✦ </span><span>Accenture Switzerland</span><span class="sep"> ✦ </span><span>Bally · AR Try-On · 3D Rendering</span><span class="sep"> ✦ </span><span>GenAI Video · Tokyo</span><span class="sep"> ✦ </span><span>Marangoni × Politecnico di Milano</span><span class="sep"> ✦ </span><span>Cartier · Ferrari · Vivienne Westwood</span><span class="sep"> ✦ </span><span>Omnichannel · E-commerce · Meta Ads</span><span class="sep"> ✦ </span>
+    <span>Brand Strategy</span><span class="sep"> ✦ </span><span>Digital Transformation</span><span class="sep"> ✦ </span><span>Luxury & Fashion</span><span class="sep"> ✦ </span><span>Accenture Switzerland</span><span class="sep"> ✦ </span><span>Bally · AR Try-On · 3D Rendering</span><span class="sep"> ✦ </span><span>GenAI Video · Tokyo</span><span class="sep"> ✦ </span><span>Marangoni × Politecnico di Milano</span><span class="sep"> ✦ </span><span>Cartier · Ferrari · Vivienne Westwood</span><span class="sep"> ✦ </span><span>Omnichannel · E-commerce · Meta Ads</span><span class="sep"> ✦ </span>
+  </div>
+</div>
+
+<section id="about" class="about">
+  <p class="s-label">Profile</p>
+  <div class="ab-grid">
+    <div>
+      <h2 class="ab-h">Five years<br>at the edge<br>of <em>luxury</em></h2>
+      <div class="ab-text">
+        <p>I'm a strategy and transformation consultant at <strong>Accenture Song</strong>, the creative agency division of Accenture, working at the precise intersection where brand vision meets digital execution — the territory legacy luxury houses find most difficult to navigate.</p>
+        <p>My background spans consulting, academic research for houses like <strong>Cartier and Ferrari</strong>, and hands-on digital marketing for a family boutique near Rome. I think in strategy but I feel in aesthetics.</p>
+        <p>I'm moving in-house — because the most exciting luxury briefs are written from the inside.</p>
+      </div>
+    </div>
+    <div>
+      <div class="cred"><div class="cred-yr">2020<br>Now</div><div><div class="cred-h">Accenture Song</div><p class="cred-p">Manager · Strategy & Consulting · Luxury, Fashion & Digital</p></div></div>
+      <div class="cred"><div class="cred-yr">2018<br>2020</div><div><div class="cred-h">Istituto Marangoni × Politecnico di Milano</div><p class="cred-p">MSc Luxury & Fashion Management · Cartier, Ferrari, Vivienne Westwood</p></div></div>
+      <div class="cred"><div class="cred-yr">Key</div><div><div class="cred-h">Bally — Omnichannel Transformation</div><p class="cred-p">AR try-on · 3D rendering · Foot scanning · Digital retail</p></div></div>
+      <div class="cred"><div class="cred-yr">Key</div><div><div class="cred-h">GenAI Video Content — Tokyo</div><p class="cred-p">Generative AI video strategy for international luxury client</p></div></div>
+      <div class="cred"><div class="cred-yr">Live</div><div><div class="cred-h">Marco Masi Fashion Store</div><p class="cred-p">Digital strategy · Meta & Google Ads · Shopify · AI content</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="mf-inner">
+    <p class="mf-pre">// Point of View</p>
+    <div class="mf-text">
+      <div>The best luxury</div>
+      <div class="out">strategies don't</div>
+      <div>sell a <em>product</em></div>
+      <div class="out">they sell a self</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc"><div class="proc-n">01</div><div class="proc-t">Insight</div><p class="proc-d">Every brief starts with a cultural truth — a human observation about desire, identity, or aspiration.</p></div>
+      <div class="proc"><div class="proc-n">02</div><div class="proc-t">Strategy</div><p class="proc-d">The positioning, the audience tension, and the single-minded brand idea before a single asset is conceived.</p></div>
+      <div class="proc"><div class="proc-n">03</div><div class="proc-t">Concept</div><p class="proc-d">The creative territory: what it looks like, sounds like, feels like — built to live across channels and seasons.</p></div>
+      <div class="proc"><div class="proc-n">04</div><div class="proc-t">Execution</div><p class="proc-d">Channel architecture, content formats, platform strategy, and the digital tools that bring it all to life.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="work">
+  <div class="w-head">
+    <div>
+      <p class="s-label">Selected Work</p>
+      <h2 class="w-h">Three brands.<br><em>Three briefs.</em></h2>
+    </div>
+    <div class="w-ct">003 Campaigns · 2025</div>
+  </div>
+
+
+  <!-- BULGARI -->
+  <div class="camp">
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="bTrack">
+        <div><img src="bulgari1.png" alt="Bulgari 1"/></div>
+        <div><img src="bulgari2.png" alt="Bulgari 2"/></div>
+        <div><img src="bulgari3.png" alt="Bulgari 3"/></div>
+        <div><img src="bulgari4.png" alt="Bulgari 4"/></div>
+      </div>
+    </div>
+    <div class="car-nav">
+      <button class="car-btn" onclick="bGo(-1)">←</button>
+          <div class="car-dots" id="bDots"></div>
+          <button class="car-btn" onclick="bGo(1)">→</button>
+    </div>
+    <div class="c-content">
+      <div class="c-brand">Bulgari · Serpenti Reborn · Gen Z Strategy</div>
+      <h3 class="c-title">New skin.<br><em>Same serpent.</em></h3>
+      <p class="c-cap">Cartier made the Tank desirable again. Bulgari needs to do the same for the Serpenti — but the origin myth is more powerful. Elizabeth Taylor. Italian cinema. A woman who has never been just one thing. Four skins, four emotional states, one watch. The Serpenti doesn't dress you up. It reveals who you already are.</p>
+      <div class="c-tags"><span class="ctag">Brand Strategy</span><span class="ctag">Gen Z</span><span class="ctag">Watch Campaign</span><span class="ctag">Color Theory</span><span class="ctag">GenAI</span></div>
+      <div class="c-bottom"><div class="c-corner">001 / 003</div><div class="c-num">01</div></div>
+    </div>
+  </div>
+
+  <!-- LOEWE -->
+  <div class="camp">
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="lTrack">
+        <div><img src="loewe1.png" alt="Loewe 1"/></div>
+        <div><img src="loewe2.png" alt="Loewe 2"/></div>
+        <div><img src="loewe3.png" alt="Loewe 3"/></div>
+      </div>
+    </div>
+    <div class="car-nav">
+      <button class="car-btn" onclick="lGo(-1)">←</button>
+          <div class="car-dots" id="lDots"></div>
+          <button class="car-btn" onclick="lGo(1)">→</button>
+    </div>
+    <div class="c-content">
+      <div class="c-brand">Loewe × Kakao Friends · FW 2026/27 · Korea</div>
+      <h3 class="c-title"><em>Elsewhere</em></h3>
+      <p class="c-cap">Korean Gen Z doesn't need more joy — they need an exit. Loewe FW26/27 is the portal: plush, inflatable, unapologetically soft. Worn correctly, it takes you somewhere else entirely. A digital campaign for the Korean market built around Ryan from Kakao Friends — the one companion who never asks anything of you. Three formats: teaser, campaign reveal, editorial.</p>
+      <div class="c-tags"><span class="ctag">FW 2026/27</span><span class="ctag">Korea</span><span class="ctag">Gen Z</span><span class="ctag">KakaoTalk</span><span class="ctag">GenAI</span></div>
+      <div class="c-bottom"><div class="c-corner">002 / 003</div><div class="c-num">02</div></div>
+    </div>
+  </div>
+
+  <!-- FERRARI -->
+  <div class="camp">
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="fTrack">
+        <div><img src="ferrari1.png" alt="Ferrari 1"/></div>
+        <div><img src="ferrari2.png" alt="Ferrari 2"/></div>
+        <div style="background:#000;"><video autoplay muted loop playsinline style="width:100%;display:block;"><source src="ferrari-video.mp4" type="video/mp4"></video></div>
+      </div>
+    </div>
+    <div class="car-nav">
+      <button class="car-btn" onclick="fGo(-1)">←</button>
+          <div class="car-dots" id="fDots"></div>
+          <button class="car-btn" onclick="fGo(1)">→</button>
+    </div>
+    <div class="c-content">
+      <div class="c-brand">Ferrari Luce · Electric Launch · Brand Strategy</div>
+      <h3 class="c-title">The most powerful<br>sound is <em>silence.</em></h3>
+      <p class="c-cap">Ferrari's first electric car faces an existential communications challenge — how do you sell a Ferrari without the roar? You reframe silence as evolution, not loss. The Luce moves through the Tuscan countryside at speed. Wild horses graze undisturbed. Nature doesn't run. The most advanced Ferrari ever made is also the most respectful.</p>
+      <div class="c-tags"><span class="ctag">Electric Launch</span><span class="ctag">Brand Strategy</span><span class="ctag">Film</span><span class="ctag">Veo 3</span><span class="ctag">GenAI</span></div>
+      <div class="c-bottom"><div class="c-corner">003 / 003</div><div class="c-num">03</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise" class="expertise">
+  <p class="s-label">Expertise</p>
+  <div class="exp-grid">
+    <div class="exp"><div class="exp-tag">Strategy</div><div class="exp-name">Brand & Positioning</div><p class="exp-desc">From heritage reactivation to new market entry — building the strategic frameworks that define where a luxury house needs to go and why.</p></div>
+    <div class="exp"><div class="exp-tag">Digital</div><div class="exp-name">Digital Transformation</div><p class="exp-desc">Omnichannel architecture, AR and immersive retail, AI-powered content, and e-commerce optimization — consulting-grade execution at brand speed.</p></div>
+    <div class="exp"><div class="exp-tag">Creative</div><div class="exp-name">Campaign Direction</div><p class="exp-desc">Translating strategy into campaign concepts, content frameworks, and platform-specific creative — from social to editorial to experiential.</p></div>
+    <div class="exp"><div class="exp-tag">Markets</div><div class="exp-name">Luxury & Fashion</div><p class="exp-desc">Deep fluency across LVMH, Kering, and Richemont ecosystems, automotive luxury, and Swiss and Italian market contexts.</p></div>
+    <div class="exp"><div class="exp-tag">Commerce</div><div class="exp-name">E-commerce & Performance</div><p class="exp-desc">End-to-end digital marketing: Shopify, Meta and Google Ads, email automation, and loyalty mechanics for mid-luxury retail.</p></div>
+    <div class="exp"><div class="exp-tag">AI</div><div class="exp-name">Generative AI</div><p class="exp-desc">From GenAI video strategy in Tokyo to AI image and content pipelines for fashion retail — applying emerging tools with strategic intentionality.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <p class="ct-pre">// Let's talk</p>
+  <h2 class="ct-h">The right brief<br>is <em>waiting.</em></h2>
+  <a href="https://www.linkedin.com/in/annamaria-pollio/" target="_blank" class="ct-linkedin">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Connect on LinkedIn
+  </a>
+  <p class="ct-sub">Based in Switzerland · Open to relocate globally</p>
+</section>
+
+<footer>
+  <p>© 2025 Annamaria Pollio — All rights reserved</p>
+  <div class="f-links">
+    <a href="https://www.linkedin.com/in/annamaria-pollio/" target="_blank">LinkedIn</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Cursor
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function a(){cd.style.left=mx+'px';cd.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button,.camp,.exp,.proc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cr.classList.add('x'));
+  el.addEventListener('mouseleave',()=>cr.classList.remove('x'));
+});
+
+// Ferrari lines
+const fl=document.getElementById('fLines');
+if(fl){for(let i=0;i<20;i++){const l=document.createElement('div');const a=-55+(i/19)*110;const h=52+Math.abs(a)*1.3;l.style.cssText=`position:absolute;bottom:0;left:${(i/19)*100}%;width:1px;height:${h}%;background:linear-gradient(to top,rgba(180,14,14,.2),transparent);transform:rotate(${a}deg);transform-origin:bottom center;opacity:${.04+(1-Math.abs(a)/55)*.18};`;fl.appendChild(l);}}
+
+// Carousel — proven pattern
+function makeCarousel(trackId, dotsId, total) {
+  let cur = 0;
+  const track = document.getElementById(trackId);
+  const dotsEl = document.getElementById(dotsId);
+  dotsEl.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('span');
+    d.className = 'car-dot' + (i === 0 ? ' on' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+  function goTo(n) {
+    cur = n;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dotsEl.querySelectorAll('.car-dot').forEach((d, i) => d.classList.toggle('on', i === cur));
+  }
+  function go(dir) { goTo((cur + dir + total) % total); }
+  setInterval(() => go(1), 4000);
+  return go;
+}
+const bGo = makeCarousel('bTrack', 'bDots', 4);
+const lGo = makeCarousel('lTrack', 'lDots', 3);
+const fGo = makeCarousel('fTrack', 'fDots', 3);
+document.querySelector('[onclick="move(\'bTrack\',\'bDots\',4,-1)"]') && 0;
+function move(t,d,n,dir){
+  if(t==='bTrack') bGo(dir);
+  if(t==='lTrack') lGo(dir);
+  if(t==='fTrack') fGo(dir);
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(
